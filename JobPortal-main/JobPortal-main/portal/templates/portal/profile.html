@@ -1,0 +1,66 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow p-4 mx-auto" style="max-width: 600px;">
+
+        <h2 class="text-center text-primary mb-4">
+            Student Profile 👤
+        </h2>
+
+        <p>
+            <b>Name:</b> {{ student.name }}
+        </p>
+
+        <p>
+            <b>Email:</b> {{ student.email }}
+        </p>
+
+        <p>
+            <b>Phone:</b> {{ student.phone }}
+        </p>
+
+        <p>
+            <b>Qualification:</b> {{ student.qualification }}
+        </p>
+
+        <p>
+            <b>Skills:</b> {{ student.skills }}
+        </p>
+<hr>
+
+<h4>Resume</h4>
+
+{% if student.resume %}
+
+   <a href="{{ student.resume.url }}"
+   target="_blank"
+   class="btn btn-success">
+
+    📄 Open Resume
+
+</a>
+{% else %}
+
+    <p class="text-danger">
+        ❌ No Resume Uploaded
+    </p>
+
+{% endif %}
+        <div class="text-center mt-4">
+
+            <a href="{% url 'dashboard' %}" class="btn btn-primary">
+                Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

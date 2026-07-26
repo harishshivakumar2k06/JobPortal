@@ -1,0 +1,186 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+
+
+<section class="hero text-center mt-5">
+
+    <div class="container">
+
+
+        <h1 class="display-4 fw-bold">
+            Find Your Dream Job 🚀
+        </h1>
+
+
+        <p class="lead">
+            Search thousands of fresher jobs from top companies.
+        </p>
+
+
+        <a href="{% url 'jobs' %}" 
+           class="btn btn-warning btn-lg mt-3">
+
+            Browse Jobs
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+
+
+<section class="container mt-5">
+
+
+    <h2 class="text-center mb-4">
+        Why Choose Our Job Portal?
+    </h2>
+
+
+
+    <div class="row">
+
+
+
+        <div class="col-md-4">
+
+            <div class="card shadow p-4 text-center">
+
+                <h3>💼</h3>
+
+                <h4>Fresher Jobs</h4>
+
+                <p>
+                    Find the latest job opportunities for fresh graduates.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="col-md-4">
+
+            <div class="card shadow p-4 text-center">
+
+                <h3>🏢</h3>
+
+                <h4>Top Companies</h4>
+
+                <p>
+                    Explore jobs from different companies and industries.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="col-md-4">
+
+            <div class="card shadow p-4 text-center">
+
+                <h3>🚀</h3>
+
+                <h4>Easy Apply</h4>
+
+                <p>
+                    Apply for jobs quickly and track your applications.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+</section>
+<!-- Latest Jobs Section -->
+
+<section class="container mt-5">
+
+    <h2 class="text-center mb-4">
+        🚀 Latest Jobs
+    </h2>
+
+
+    <div class="row">
+
+
+        {% for job in latest_jobs %}
+
+
+        <div class="col-md-4 mb-4">
+
+
+            <div class="card shadow p-4 h-100">
+
+
+                <h4 class="text-primary">
+                    {{ job.title }}
+                </h4>
+
+
+                <p>
+                    <b>Company:</b> {{ job.company }}
+                </p>
+
+
+                <p>
+                    <b>Location:</b> {{ job.location }}
+                </p>
+
+
+                <p>
+                    <b>Salary:</b> {{ job.salary }}
+                </p>
+
+
+                <a href="{% url 'jobs' %}"
+                   class="btn btn-success">
+
+                    View Job
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+        {% empty %}
+
+
+        <h4 class="text-center">
+            No jobs available yet 🚫
+        </h4>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</section>
+
+
+
+{% endblock %}

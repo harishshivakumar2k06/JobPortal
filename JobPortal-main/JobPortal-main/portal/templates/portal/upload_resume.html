@@ -1,0 +1,50 @@
+{% extends 'portal/base.html' %}
+
+
+{% block title %}Upload Resume{% endblock %}
+
+
+{% block content %}
+
+<div class="container mt-5">
+
+
+<div class="card shadow p-4">
+
+<h2>
+📄 Upload Resume
+</h2>
+
+<hr>
+
+
+<form method="POST" enctype="multipart/form-data">
+
+{% csrf_token %}
+
+
+<label>
+Select Resume (PDF)
+</label>
+
+
+<input type="file"
+       name="resume"
+       class="form-control mt-2"
+       required>
+
+
+<button class="btn btn-warning mt-3">
+Upload Resume
+</button>
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+{% endblock %}

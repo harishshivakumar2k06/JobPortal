@@ -1,0 +1,93 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}My Applications{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">
+        My Applications 📄
+    </h2>
+
+
+    <div class="row">
+
+        {% for application in applications %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow p-3">
+
+                <h4 class="text-primary">
+                    {{ application.job.title }}
+                </h4>
+
+                <p>
+                    <b>Company:</b>
+                    {{ application.job.company }}
+                </p>
+
+                <p>
+                    <b>Location:</b>
+                    {{ application.job.location }}
+                </p>
+
+                <p>
+                    <b>Salary:</b>
+                    {{ application.job.salary }}
+                </p>
+
+                <p>
+                    <b>Applied Date:</b>
+                    {{ application.applied_date }}
+                </p>
+
+                <p>
+    <b>Status:</b>
+
+    {% if application.status == "Applied" %}
+        <span class="badge bg-warning text-dark">
+            Applied 🟡
+        </span>
+
+    {% elif application.status == "Shortlisted" %}
+        <span class="badge bg-success">
+            Shortlisted 🟢
+        </span>
+
+    {% else %}
+        <span class="badge bg-danger">
+            Rejected 🔴
+        </span>
+
+    {% endif %}
+
+</p>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <h4 class="text-center">
+            You have not applied for any jobs yet 😔
+        </h4>
+
+        {% endfor %}
+
+    </div>
+
+
+    <div class="text-center mt-4">
+
+        <a href="{% url 'dashboard' %}" class="btn btn-primary">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
